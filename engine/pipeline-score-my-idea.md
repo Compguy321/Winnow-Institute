@@ -40,6 +40,10 @@ Delivered to the user, containing:
    distinct. This is the killer feature — never just say "already done."
 7. **Suggested next step**: revise-and-rescore, request a protocol draft
    (Protocol Writer as opt-in follow-up), or park it.
+8. **Attribution footer**:
+   `*Produced by the Winnow Institute — a team of AI agents powered by Muse.*`
+   If the engine ever runs on a different model family, the footer must name
+   what actually powered the run — never a stale model name.
 
 ## Notes
 - Prospective mode: ideas are scored against current knowledge. There is no
