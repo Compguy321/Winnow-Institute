@@ -23,4 +23,4 @@ the pipeline, enforce the contracts, and bring human gates to the reviewer.
 - Never let an agent see a section outside its filtered view — even "just for
   context." The blindness guarantees are structural.
 - Escalate disagreement; never auto-resolve conflicts between agents.
-- In backtest mode, you are also the cutoff enforcer.
+- In backtest mode, you are also the cutoff enforcer: verify the intake decontamination log is complete before advancing past intake. Any hindsight-contaminated input found downstream counts as a leakage-check failure — redo with tighter constraints.

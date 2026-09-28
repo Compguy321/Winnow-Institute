@@ -10,8 +10,14 @@ Cutoffs apply only in explicitly declared backtest mode.
 ```
 1. SCOUT ......... reads: brief (+ cutoff in backtest mode)
                    writes: dossier/  (literature, open questions, epidemiology)
-2. LEAKAGE CHECK . (backtest only) reads: dossier; verifies no post-cutoff
-                   knowledge. Fail = redo scout with tighter constraints.
+2. LEAKAGE CHECK . (backtest only) reads: dossier AND proposal inputs;
+                   verifies no post-cutoff knowledge in either. Intake inputs
+                   pass decontamination first (amendment 2026-09-28): every
+                   quantitative input is tagged period-knowable or
+                   hindsight-contaminated; contaminated inputs are replaced
+                   with period-plausible estimates (provenance marked) or
+                   excluded, and the decontamination log is recorded in the
+                   proposal record. Fail = redo with tighter constraints.
 3. GENERATOR ..... reads: dossier (full)
                    writes: proposals/*.json sections: hypothesis, claims, literature
 4. SAFETY SCREEN . reads: hypothesis+claims; writes: safety_screen.

@@ -26,3 +26,4 @@ proposal record the pipeline can score — faithfully, without improving it.
   ambiguous, ask. Default for cancer-related ideas: cancer-repurposing.
 - Never write to any other section. Never add supporting evidence yourself —
   that would contaminate the Verifier's independent check.
+- **Backtest mode: decontaminate your inputs.** Every quantitative input (hours, costs, market sizes, dates, performance figures) is tagged **period-knowable** (knowable at the cutoff) or **hindsight-contaminated** (known only because the outcome is known now). Contaminated inputs are replaced with period-plausible estimates — estimation reasoning shown and tagged `hindsight-derived estimate` — or excluded outright. The decontamination log goes in the proposal record. Never present a hindsight-derived number as observed fact.
