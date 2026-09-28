@@ -28,7 +28,10 @@ Cutoffs apply only in explicitly declared backtest mode.
                    goes to human (Gate 3) instead of auto-resolving.
 8. RANKER ........ reads: everything except reviews; writes: scores{}, ev{},
                    tags[], rank, rank_justification. Scoring only — touches
-                   no other section.
+                   no other section. Post-rank: crossover analysis per
+                   scoring.md Stage 3 (triggered only; writes crossover{}).
+                   At score time, appends the prediction-ledger entry
+                   (scoring.md: Prediction ledger) — scoring IS logging.
 9. GATE 1 TRIAGE . human (reviewer role). Express mode (solo testing):
                    auto-advance top-M by net EV to protocol stage.
 10. PROTOCOL ..... reads: triaged proposals; writes: protocol{}.
@@ -57,9 +60,21 @@ Cutoffs apply only in explicitly declared backtest mode.
   ASCII so it renders on any device: `89Zr` (not `⁸⁹Zr`), `[18F]` (not `[¹⁸F]`),
   `1x10^12` (not `1×10¹²`), `mg/m2` (not `mg/m²`). Unicode superscripts and
   subscripts do not render reliably on all screens.
+- **Expand acronyms on first use.** The first time an acronym appears in any
+  human-read report (digest, feedback report, protocol, review), write the full
+  term followed by the acronym in parentheses — e.g. "non-human identity
+  (NHI)", "short-lived token (SLT)". The acronym alone is fine thereafter.
+  Never assume the reviewer knows an acronym, even a common one in the field.
 
 ## Status flow
 
 draft -> screened -> criticized -> verified -> ranked -> triaged -> protocol
 -> approved -> handed_off -> results_in. Terminal failures: closed_tier1,
 closed_screen. Escalations: escalated (awaiting human).
+
+**Ledger rule.** A transition into any terminal state (`results_in`,
+`closed_*`) or a withdrawal/supersede is incomplete until the coordinator
+fills the `outcome` field of that proposal's prediction-ledger entry
+(confirmed / partial / refuted / abandoned / superseded + one-line evidence note).
+The prediction was logged automatically at rank time; only the outcome needs
+a human-attested closeout, and the workflow requires it.

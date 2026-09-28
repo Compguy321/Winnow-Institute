@@ -50,8 +50,20 @@ simply absent from their filtered view.
     "p_mechanism": 0.0,
     "p_decisive_test": 0.0,
     "p_success": 0.0,
+    "estimation_mode": "base-rate | bottom-up",
+    "base_rate_note": "reference class + rate, or why none exists (mode B)",
+    "sub_claims": [
+      {"claim": "...", "p": 0.0, "basis": "verdict ids / rubric range"}
+    ],
+    "binding_constraint": "which sub-claim most limits P(mechanism)",
+    "p_test_feasible": 0.0,
+    "p_test_interpretable": 0.0,
     "impact_bin": "10s | 100s | 1K | 10K | 100K | 1M+",
     "impact_qaly": 0,
+    "value_native": [0, 0],
+    "value_unit": "pack-declared native unit",
+    "conversion_to_qaly": "pack rule + one-line uncertainty note",
+    "display_default": "native | qaly",
     "p_harm": 0.0,
     "severity_qaly": 0,
     "program_cost_qaly": 0,
@@ -86,3 +98,23 @@ simply absent from their filtered view.
 File: `cycles/<run-id>/dossier/dossier.md` — literature survey: key papers
 (with dates), findings, open questions, contradictions, epidemiology numbers
 for impact estimation, and (in backtest mode) the cutoff date + leakage attestation.
+
+## Prediction ledger
+
+File: `~/workspace/discovery-agents/predictions/ledger.jsonl` — global across
+runs, one JSON object per line, append-only. Written by the ranker at score
+time; outcome filled by the coordinator at terminal status transitions.
+
+```json
+{"proposal_id": "cyb-010", "run_id": "run-003-cyber-defense",
+ "date_scored": "2026-09-27", "p_success": 0.60,
+ "p_mechanism": 0.75, "p_decisive_test": 0.80,
+ "estimation_mode": "base-rate | bottom-up",
+ "net_ev_qaly": 159.0, "rank": 2,
+ "outcome": null,
+ "outcome_date": null, "outcome_note": null}
+```
+
+`outcome`: `confirmed | partial | refuted | abandoned | superseded` — filled when the
+proposal reaches `results_in`, `closed_*`, or is withdrawn. A terminal
+transition without an outcome entry is incomplete.

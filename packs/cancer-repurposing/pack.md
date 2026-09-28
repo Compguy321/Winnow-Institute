@@ -28,6 +28,12 @@ claims a non-expert reviewer can check.
 - Standard-of-care baseline: what happens to these patients today.
 - Impact bins are MARGINAL vs standard of care, order-of-magnitude only.
 
+## Value measure
+- `value_unit`: qaly (fallback — health outcomes are already welfare-direct:
+  mortality + morbidity vs. standard of care)
+- `display_default`: qaly
+- `conversion_to_qaly`: n/a (native)
+
 ## Protocol templates
 - Phase: cheapest decisive test first — typically in-vitro dose-response in
   relevant cell lines → in-vivo xenograft → retrospective EHR analysis where

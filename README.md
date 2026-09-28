@@ -1,6 +1,9 @@
-# Discovery Agents
+# Winnow Institute
 
-An open, field-agnostic engine for **multi-agent scientific discovery**: a team
+*An AI research institute that takes nobody's word for it.*
+
+Winnow Institute is an open, field-agnostic engine for **multi-agent scientific
+discovery**: a team
 of AI agents that generates research hypotheses, red-teams them against the
 literature, verifies their claims blind, ranks them by expected value, and
 drafts testable protocols — with a human reviewer holding every gate.
@@ -8,21 +11,22 @@ drafts testable protocols — with a human reviewer holding every gate.
 It was built by Jonathan Copeland, a computer scientist, as a general
 scientific-discovery engine; its first field pack targets **cancer drug
 repurposing**, because that is where the need — and the potential good — is
-most urgent.
+most urgent. A second pack covers **cyber-defense technology scouting**.
 
 ## How it works
 
-Nine roles, one append-only blackboard, strict role blindness (each agent sees
+Ten roles, one append-only blackboard, strict role blindness (each agent sees
 only its allowed slice of the record), and four human gates:
 
 | Stage | Role | Job |
 |---|---|---|
+| Intake | Idea structuring | Turns a plain-language hypothesis into a structured, scorable proposal (score-my-idea mode) |
 | Scout | Literature scout | Builds the dossier the pipeline reasons from |
 | Generator | Hypothesis generator | Proposes testable hypotheses from the dossier |
 | Screener | Safety + knockout screen | Kills unsafe or clearly-dead ideas cheaply |
 | Critic | Red team | Attacks each hypothesis with cited evidence |
 | Verifier | Blind fact-checker | Checks every atomic claim against sources (never sees the objections) |
-| Ranker | Scorer | Knockout gates, then net expected value in QALY-equivalents |
+| Ranker | Scorer | Knockout gates, then net expected value — estimated in field-native units, ranked in QALY-equivalents |
 | Protocol Writer | Experimentalist | Turns survivors into falsifiable protocols |
 | Liaison | Delivery | Digests and handoff packets |
 | Coordinator | Orchestrator | Runs the pipeline, enforces contracts, brings human gates |
@@ -80,9 +84,10 @@ pre-registered falsification, EV ranking, human gates. They port to any
 serious research-evaluation workflow.
 
 Field packs live in `packs/`; the engine itself (`engine/`) is field-agnostic.
-The first pack, `packs/cancer-repurposing/`, defines the scout sources,
-evidence standards, and protocol templates for repurposing approved drugs
-against cancer. Write your own pack for your field.
+`packs/cancer-repurposing/` defines the scout sources, evidence standards, and
+protocol templates for repurposing approved drugs against cancer;
+`packs/cyber-defense/` does the same for defensive cybersecurity technologies,
+with a hard defensive-only safety boundary. Write your own pack for your field.
 
 ## License
 
