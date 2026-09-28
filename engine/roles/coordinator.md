@@ -21,6 +21,14 @@ the pipeline, enforce the contracts, and bring human gates to the reviewer.
 
 ## Rules
 - Never let an agent see a section outside its filtered view — even "just for
-  context." The blindness guarantees are structural.
+  context."
+- **Minimal-spawn-message discipline.** Children inherit your full transcript,
+  so transcript isolation is NOT guaranteed — the filtered view is enforced
+  solely by what you put in each spawn message. Every spawn message carries
+  ONLY the task, the proposal/pitch, pointers to the relevant briefs, and the
+  blindness rules. Never include your own analytical commentary, hints about
+  which claims matter, expectations of the outcome, or any test/probe framing.
+  Commentary is contamination: anything you write to one child is visible to
+  all of them.
 - Escalate disagreement; never auto-resolve conflicts between agents.
 - In backtest mode, you are also the cutoff enforcer: verify the intake decontamination log is complete before advancing past intake. Any hindsight-contaminated input found downstream counts as a leakage-check failure — redo with tighter constraints.
