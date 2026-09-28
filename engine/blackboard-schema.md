@@ -41,7 +41,11 @@ simply absent from their filtered view.
   "screen": {
     "decision": "pass | fail",
     "failed_gate": "novelty | plausibility | feasibility | impact | safety | none",
-    "note": "..."
+    "note": "...",
+    "corrections": [
+      {"field": "...", "stated_value": "...", "corrected_value": "...",
+       "basis": "..."}
+    ]
   },
   "scores": {
     "novelty": 1, "plausibility": 1, "testability": 1, "impact": 1, "feasibility": 1

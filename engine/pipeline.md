@@ -26,6 +26,10 @@ Cutoffs apply only in explicitly declared backtest mode.
                    Fail any knockout gate = record closed (cheap death).
                    Knockout gates: already-proven | plausibility<=2 |
                    feasibility<=2 | impact<=2 (1-10 scales).
+                   Correctable pitch errors (amendment 2026-09-28) do not
+                   close the record: they are logged in screen.corrections[],
+                   corrected figures flow downstream, and the corrections are
+                   shown to the human at triage / in the feedback report.
 6. CRITIC ........ reads: hypothesis+claims+literature (NOT generator notes,
                    NOT safety/prior-art internals); writes: objections.
 7. VERIFIER ...... reads: claims+literature (NOT objections — blind);
