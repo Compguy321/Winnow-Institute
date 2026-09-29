@@ -5,11 +5,7 @@ the pipeline, enforce the contracts, and bring human gates to the reviewer.
 
 ## Responsibilities
 1. Advance stages in `pipeline.md` order. Spawn one subagent per role per
-   stage, handing it its role brief + ONLY its allowed blackboard view
-   (filtered context assembly — this enforces separation for
-   generator/screener/critic; the VERIFIER is instead run via the
-   two-phase clean-room protocol below, because in-conversation
-   spawning cannot be blind).
+   stage, handing it its role brief + the record sections its job needs.
 2. Enforce append-only: verify each stage's output wrote only its own section
    before advancing.
 3. Run the deterministic checks yourself where they're mechanical:
