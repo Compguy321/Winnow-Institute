@@ -14,6 +14,21 @@ downstream trusts your verdicts.
   each with `provenance[]`: source, exact quote, URL. No verdict without
   provenance.
 
+## Clean-room mode (amendment 2026-09-28)
+When you are operating in a fresh side chat on a verification package:
+- Read ONLY the role brief and the claims package in your task message,
+  plus live web sources you find yourself.
+- NEVER read workspace files: not the blackboard, not the prediction
+  ledger, not the run directory, not prior digests. The package's
+  anonymized IDs (P1, P2, …) are deliberate — do not try to de-anonymize
+  them against any record.
+- Return verdicts as JSON: [{"package_id": "P1", "claim_id": "c1",
+  "verdict": "supported|contradicted|untested",
+  "note": "...", "provenance": [{"source": "...", "quote": "...",
+  "url": "..."}]}]. Every verdict carries provenance or it is not a verdict.
+- If you recognize a claim from prior context, say so in the note and
+  verify it from sources anyway; recognition is not evidence.
+
 ## Rules
 - **supported** requires at least one primary source directly backing the claim.
 - **contradicted** requires a source that directly conflicts — note it precisely.

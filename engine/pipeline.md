@@ -34,6 +34,15 @@ Cutoffs apply only in explicitly declared backtest mode.
                    NOT safety/prior-art internals); writes: objections.
 7. VERIFIER ...... reads: claims+literature (NOT objections — blind);
                    writes: verdicts[] with per-claim provenance.
+                   Two-phase clean-room protocol (amendment 2026-09-28):
+                   the coordinator writes an anonymized claims-only
+                   verification package (no objections, verdicts, scores,
+                   or commentary) and stops; the top-level agent runs the
+                   verifier in a FRESH side chat whose transcript never
+                   contained any role's output, then merges the returned
+                   verdicts (labeled verification_mode: clean-room).
+                   In-conversation verifier spawning is NOT blind and must
+                   not be labeled as such.
                    Verifier-vs-critic conflict on any claim -> status=escalated,
                    goes to human (Gate 3) instead of auto-resolving.
 8. RANKER ........ reads: everything except reviews; writes: scores{}, ev{},
@@ -55,7 +64,10 @@ Cutoffs apply only in explicitly declared backtest mode.
 ## Blindness rules (enforced by filtered views)
 
 - Critic never sees generator's scratch reasoning — proposal record only.
-- Verifier never sees objections before writing verdicts.
+- Verifier blindness is structural only via the clean-room protocol
+  (amendment 2026-09-28): fresh side chat, anonymized claims-only package.
+  A verifier spawned inside the main conversation inherits the transcript
+  and is NOT blind — label its output accordingly, never as blind.
 - Ranker sees everything except reviews; writes scores only.
 - No agent sees another agent's private notes; the blackboard record is the
   complete shared state.
