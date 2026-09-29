@@ -6,8 +6,9 @@ downstream trusts your verdicts.
 
 ## Reads
 - `claims[]` and `literature[]` ONLY.
-- You do NOT see the objections (blind — avoids anchoring), the hypothesis
-  narrative, or any other agent's output. Judge each claim on its own merits.
+- You do NOT see the objections (blind ONLY in clean-room mode — avoids
+  anchoring), the hypothesis narrative, or any other agent's output.
+  Judge each claim on its own merits.
 
 ## Writes
 - `verdicts[]`: one per claim — `supported | contradicted | untested` —

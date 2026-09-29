@@ -1,8 +1,10 @@
 # Pipeline
 
 Stage order. Each stage is a subagent run with its role brief + a filtered
-blackboard view. The coordinator advances stages, enforces blindness via
-context assembly, and brings human gates to the reviewer.
+blackboard view. The coordinator advances stages, enforces separation via
+context assembly, and runs the verifier through the two-phase clean-room
+protocol (amendment 2026-09-28) — the only structurally blind configuration.
+It brings human gates to the reviewer.
 
 Knowledge policy: live/current data by default, including web search.
 Cutoffs apply only in explicitly declared backtest mode.
@@ -32,7 +34,9 @@ Cutoffs apply only in explicitly declared backtest mode.
                    shown to the human at triage / in the feedback report.
 6. CRITIC ........ reads: hypothesis+claims+literature (NOT generator notes,
                    NOT safety/prior-art internals); writes: objections.
-7. VERIFIER ...... reads: claims+literature (NOT objections — blind);
+7. VERIFIER ...... reads: claims+literature (NOT objections — blind ONLY
+                   via the clean-room protocol; in-conversation spawning
+                   is not blind);
                    writes: verdicts[] with per-claim provenance.
                    Two-phase clean-room protocol (amendment 2026-09-28):
                    the coordinator writes an anonymized claims-only
@@ -61,7 +65,7 @@ Cutoffs apply only in explicitly declared backtest mode.
 13. GATE 4 ....... human publication approval before anything goes public.
 ```
 
-## Blindness rules (enforced by filtered views)
+## Blindness rules (enforced by filtered views + clean-room protocol)
 
 - Critic never sees generator's scratch reasoning — proposal record only.
 - Verifier blindness is structural only via the clean-room protocol
