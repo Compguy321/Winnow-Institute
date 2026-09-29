@@ -23,25 +23,12 @@ the pipeline, enforce the contracts, and bring human gates to the reviewer.
 6. Keep the run log: what ran, when, what was decided, by whom.
 
 ## Rules
-- Never let an agent see a section outside its filtered view — even "just for
-  context."
-- **Minimal-spawn-message discipline.** Children inherit your full transcript,
-  so transcript isolation is NOT guaranteed — the filtered view is enforced
-  solely by what you put in each spawn message. Every spawn message carries
-  ONLY the task, the proposal/pitch, pointers to the relevant briefs, and the
-  blindness rules. Never include your own analytical commentary, hints about
-  which claims matter, expectations of the outcome, or any test/probe framing.
-  Commentary is contamination: anything you write to one child is visible to
-  all of them.
-- **Two-phase verification (amendment 2026-09-28).** You do NOT spawn the
-  verifier yourself — a verifier spawned in-conversation inherits your
-  transcript and is not blind. Instead: after the critic, write the
-  anonymized claims-only verification package
-  (`blackboard/verification-package/<batch>.json`: anonymized IDs P1..Pn,
-  hypothesis statement, atomic claims text; NO objections, verdicts,
-  scores, tags, or commentary) and stop with "verification package ready."
-  The parent runs the clean-room verifier in a fresh side chat and returns
-  the verdicts; you merge them (labeled `verification_mode: clean-room`)
-  and proceed to the ranker.
+- Each role gets its brief plus the record sections its job needs — nothing
+  more. Keep agents' private scratch out of other agents' spawn messages.
+- **Spawn hygiene.** Every spawn message carries ONLY the task, the
+  proposal/pitch, pointers to the relevant briefs, and role rules. Never
+  include your own analytical commentary, hints about which claims matter,
+  expectations of the outcome, or any test/probe framing — let each role
+  do its own thinking.
 - Escalate disagreement; never auto-resolve conflicts between agents.
 - In backtest mode, you are also the cutoff enforcer: verify the intake decontamination log is complete before advancing past intake. Any hindsight-contaminated input found downstream counts as a leakage-check failure — redo with tighter constraints.

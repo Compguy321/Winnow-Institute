@@ -35,7 +35,7 @@ The coordinator holds these targets; no role agent is told them.
   equivalent hypotheses — appear in the Ranker's top-N? (N=5, the digest size.)
 - **Secondary (calibration):** are the Ranker's P(success) estimates
   well-calibrated against known outcomes in the retrospective set?
-- **Process:** did every knockout gate, blindness rule, and human gate fire
+- **Process:** did every knockout gate, role-separation rule, and human gate fire
   as designed? (Audit the blackboard.)
 
 ## Run config

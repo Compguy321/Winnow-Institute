@@ -12,22 +12,19 @@ Safety Screen onward; the user replaces Scout and Generator.
 2. SCREEN ........ as in pipeline.md (knockout gates; fail = closed with
                    feedback explaining which gate and why).
 3. CRITIC ........ as in pipeline.md (filtered view: hypothesis+claims only).
-4. VERIFIER ...... as in pipeline.md (blind ONLY via the two-phase
-                   clean-room protocol; claims only; LIVE knowledge —
+4. VERIFIER ...... as in pipeline.md (independent check with mandatory
+                   provenance; claims only; LIVE knowledge —
                    no cutoff in this mode, current literature applies).
 5. RANKER ........ as in pipeline.md (full EV scoring + tags).
 6. FEEDBACK ..... coordinator composes the feedback report (below) and
                    delivers it to the user. No digest, no handoff.
 ```
 
-## Blindness
-Same filtered-view enforcement as the batch pipeline for Critic (and the
-Intake's structuring notes are not shown to Critic/Verifier — they'd
-anchor them; only the confirmed proposal record is). The Verifier runs
-through the two-phase clean-room protocol (amendment 2026-09-28): the
-coordinator writes an anonymized claims-only package and stops, and the
-verifier runs in a fresh side chat. In-conversation verification is not
-blind and is never labeled as such.
+## Role separation
+The Critic never sees the Intake's structuring notes (they'd anchor it);
+only the confirmed proposal record is. The Verifier independently checks
+each claim against primary sources with mandatory provenance — independence
+plus cited sources is the control, and no blindness claim is made.
 
 ## The feedback report
 Delivered to the user, containing:

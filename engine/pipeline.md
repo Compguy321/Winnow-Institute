@@ -1,10 +1,8 @@
 # Pipeline
 
-Stage order. Each stage is a subagent run with its role brief + a filtered
-blackboard view. The coordinator advances stages, enforces separation via
-context assembly, and runs the verifier through the two-phase clean-room
-protocol (amendment 2026-09-28) — the only structurally blind configuration.
-It brings human gates to the reviewer.
+Stage order. Each stage is a subagent run with its role brief + the record
+sections its job needs. The coordinator advances stages and brings human
+gates to the reviewer.
 
 Knowledge policy: live/current data by default, including web search.
 Cutoffs apply only in explicitly declared backtest mode.
@@ -34,19 +32,10 @@ Cutoffs apply only in explicitly declared backtest mode.
                    shown to the human at triage / in the feedback report.
 6. CRITIC ........ reads: hypothesis+claims+literature (NOT generator notes,
                    NOT safety/prior-art internals); writes: objections.
-7. VERIFIER ...... reads: claims+literature (NOT objections — blind ONLY
-                   via the clean-room protocol; in-conversation spawning
-                   is not blind);
-                   writes: verdicts[] with per-claim provenance.
-                   Two-phase clean-room protocol (amendment 2026-09-28):
-                   the coordinator writes an anonymized claims-only
-                   verification package (no objections, verdicts, scores,
-                   or commentary) and stops; the top-level agent runs the
-                   verifier in a FRESH side chat whose transcript never
-                   contained any role's output, then merges the returned
-                   verdicts (labeled verification_mode: clean-room).
-                   In-conversation verifier spawning is NOT blind and must
-                   not be labeled as such.
+7. VERIFIER ...... reads: claims+literature; writes: verdicts[] with
+                   per-claim provenance. Independent check — the verifier
+                   did not write the proposal, and every verdict must cite
+                   its sources.
                    Verifier-vs-critic conflict on any claim -> status=escalated,
                    goes to human (Gate 3) instead of auto-resolving.
 8. RANKER ........ reads: everything except reviews; writes: scores{}, ev{},
@@ -65,13 +54,12 @@ Cutoffs apply only in explicitly declared backtest mode.
 13. GATE 4 ....... human publication approval before anything goes public.
 ```
 
-## Blindness rules (enforced by filtered views + clean-room protocol)
+## Role separation
 
 - Critic never sees generator's scratch reasoning — proposal record only.
-- Verifier blindness is structural only via the clean-room protocol
-  (amendment 2026-09-28): fresh side chat, anonymized claims-only package.
-  A verifier spawned inside the main conversation inherits the transcript
-  and is NOT blind — label its output accordingly, never as blind.
+- Verifier checks each claim against primary sources with mandatory
+  provenance; it did not write the proposal. Independence + cited sources
+  is the control — no blindness claim is made or needed.
 - Ranker sees everything except reviews; writes scores only.
 - No agent sees another agent's private notes; the blackboard record is the
   complete shared state.

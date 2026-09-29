@@ -5,7 +5,8 @@
 Winnow Institute is an open, field-agnostic engine for **multi-agent scientific
 discovery**: a team
 of AI agents that generates research hypotheses, red-teams them against the
-literature, verifies their claims blind, ranks them by expected value, and
+literature, independently verifies their claims against primary sources,
+ranks them by expected value, and
 drafts testable protocols — with a human reviewer holding every gate.
 
 It was built by Jonathan Copeland, a computer scientist, as a general
@@ -15,8 +16,8 @@ most urgent. A second pack covers **cyber-defense technology scouting**.
 
 ## How it works
 
-Ten roles, one append-only blackboard, strict role blindness (each agent sees
-only its allowed slice of the record), and four human gates:
+Ten roles, one append-only blackboard, strict role separation (each agent works
+from its brief and the record sections its job needs), and four human gates:
 
 | Stage | Role | Job |
 |---|---|---|
@@ -25,7 +26,7 @@ only its allowed slice of the record), and four human gates:
 | Generator | Hypothesis generator | Proposes testable hypotheses from the dossier |
 | Screener | Safety + knockout screen | Kills unsafe or clearly-dead ideas cheaply |
 | Critic | Red team | Attacks each hypothesis with cited evidence |
-| Verifier | Blind fact-checker | Checks every atomic claim against sources (never sees the objections) |
+| Verifier | Independent fact-checker | Checks every atomic claim against primary sources, with cited provenance for every verdict |
 | Ranker | Scorer | Knockout gates, then net expected value — estimated in field-native units, ranked in QALY-equivalents |
 | Protocol Writer | Experimentalist | Turns survivors into falsifiable protocols |
 | Liaison | Delivery | Digests and handoff packets |
@@ -50,7 +51,7 @@ agents) close a proposal immediately; negative net EV is an automatic nogo.
 To test whether the engine can find anything real, it was run with knowledge
 cut off at December 31, 2009, against two held-out targets from the
 pre-2010 literature: aspirin's colorectal-cancer prevention benefit and
-itraconazole's anticancer activity. Of 10 generated hypotheses, a blind
+itraconazole's anticancer activity. Of 10 generated hypotheses, an independent
 verifier checked 44 atomic claims (43 supported, 1 contradicted, 0 untested).
 Aspirin was rediscovered at **rank #1** (net EV 297,400 QALY-equivalents);
 itraconazole was a partial hit at rank #8 with the wrong mechanism. One cycle,
@@ -79,7 +80,8 @@ that can spawn subagents, browse the literature, and write files. Start it at
 the role briefs in `engine/roles/`. The blackboard schema is in
 `engine/blackboard-schema.md`.
 
-**Option C — as a design reference.** Steal the ideas: blinded verification,
+**Option C — as a design reference.** Steal the ideas: independent verification
+with mandatory provenance,
 pre-registered falsification, EV ranking, human gates. They port to any
 serious research-evaluation workflow.
 
