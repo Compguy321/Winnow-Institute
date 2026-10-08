@@ -69,8 +69,9 @@ This is a **research prototype**, not a validated platform:
 
 ## How to use it
 
-**Option A — with the Muse skill (recommended).** Install the
-`discovery-agents` skill in your Muse workspace and ask it to run a discovery
+**Option A — with the Muse skill (recommended).** Copy the
+`skills/discovery-agents/` folder from this repository into your Muse
+workspace's skills folder, then ask Muse to run a discovery
 cycle or score your idea. The skill carries the full engine.
 
 **Option B — with any capable agent.** Hand this repository to an AI agent
@@ -80,7 +81,7 @@ that can spawn subagents, browse the literature, and write files. Start it at
 the role briefs in `engine/roles/`. The blackboard schema is in
 `engine/blackboard-schema.md`.
 
-**Option C — as a design reference.** Steal the ideas: independent verification
+**Option C — as a design reference.** Use the ideas: independent verification
 with mandatory provenance,
 pre-registered falsification, EV ranking, human gates. They port to any
 serious research-evaluation workflow.
