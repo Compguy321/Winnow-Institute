@@ -146,7 +146,7 @@ outcomes are known. Nobody has to remember to do this — it is structural:
   by mode tag. Mode B entries are expected to be worse-calibrated; that is
   fine — the tag makes the difference visible instead of hidden.
 
-Ledger location: `~/workspace/discovery-agents/predictions/ledger.jsonl` — global
+Ledger location: `predictions/ledger.jsonl` in your workspace — global
 across runs (one JSON object per line, append-only), with `run_id` preserving
 provenance. Schema in `blackboard-schema.md`.
 

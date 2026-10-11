@@ -105,7 +105,7 @@ for impact estimation, and (in backtest mode) the cutoff date + leakage attestat
 
 ## Prediction ledger
 
-File: `~/workspace/discovery-agents/predictions/ledger.jsonl` — global across
+File: `predictions/ledger.jsonl` in your workspace — global across
 runs, one JSON object per line, append-only. Written by the ranker at score
 time; outcome filled by the coordinator at terminal status transitions.
 

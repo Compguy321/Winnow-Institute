@@ -69,10 +69,12 @@ This is a **research prototype**, not a validated platform:
 
 ## How to use it
 
-**Option A — with the Muse skill (recommended).** Copy the
-`skills/discovery-agents/` folder from this repository into your Muse
-workspace's skills folder, then ask Muse to run a discovery
-cycle or score your idea. The skill carries the full engine.
+**Option A — with the Muse skill (recommended).** Ask your Muse:
+*"Install the discovery-agents skill from this repository."* There is no
+manual upload in the Muse app or on muse.ai — installation is
+agent-mediated: your Muse places the `skills/discovery-agents/` folder
+into your workspace's skills folder for you. Then ask Muse to run a
+discovery cycle or score your idea. The skill carries the full engine.
 
 **Option B — with any capable agent.** Hand this repository to an AI agent
 that can spawn subagents, browse the literature, and write files. Start it at
