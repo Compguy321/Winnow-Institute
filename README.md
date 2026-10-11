@@ -76,6 +76,12 @@ agent-mediated: your Muse places the `skills/discovery-agents/` folder
 into your workspace's skills folder for you. Then ask Muse to run a
 discovery cycle or score your idea. The skill carries the full engine.
 
+Or copy and paste this prompt into your Muse:
+
+```
+Please install the Winnow Institute discovery-agents skill from https://github.com/Compguy321/Winnow-Institute — fetch the skills/discovery-agents/ folder from that repository, place it in my workspace's skills folder, and confirm when it's installed. Then run the discovery-agents pipeline for me: either start a discovery cycle in a research area I name, or take an idea I give you and evaluate it claim by claim — red-team it, verify its claims against primary sources with citations, and rank it by expected value with the arithmetic shown. Keep me as the human gate throughout: stop at each gate for my approval, and never publish, send, or hand anything off on my behalf without my explicit say-so.
+```
+
 **Option B — with any capable agent.** Hand this repository to an AI agent
 that can spawn subagents, browse the literature, and write files. Start it at
 `engine/pipeline.md` for batch discovery or
