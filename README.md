@@ -1,27 +1,106 @@
-Winnow Institute — an AI research institute that takes nobody's word for it. An open, field-agnostic engine for multi-agent scientific discovery: agents that generate hypotheses, red-team them, verify claims against primary sources, and rank by expected value, with a human holding every gate.
+# Winnow Institute
 
-**Winnow Institute is now open source: an AI research institute that takes nobody's word for it.**
+*An AI research institute that takes nobody's word for it.*
 
-I'm Jonathan Copeland, a computer scientist. For the past few weeks I've been building Winnow Institute — a team of AI agents, running in Muse, that works like a small research institute with deliberately separated jobs:
+Winnow Institute is an open, field-agnostic engine for **multi-agent scientific
+discovery**: a team
+of AI agents that generates research hypotheses, red-teams them against the
+literature, independently verifies their claims against primary sources,
+ranks them by expected value, and
+drafts testable protocols — with a human reviewer holding every gate.
 
-- **Scout and generator** agents develop research hypotheses.
-- A **critic** agent red-teams them.
-- A **verifier** agent independently checks every atomic claim against primary sources, with citations.
-- A **ranker** scores the survivors by expected value, showing its arithmetic.
-- A **protocol writer** turns what survives into testable experiments with pre-registered falsification criteria — the exact result that would kill the idea, written down in advance.
+It was built by Jonathan Copeland, a computer scientist, as a general
+scientific-discovery engine; its first field pack targets **cancer drug
+repurposing**, because that is where the need — and the potential good — is
+most urgent. A second pack covers **cyber-defense technology scouting**.
 
-I hold four human gates. Nothing is published, sent, or handed off without my explicit approval. It works in both directions: it generates its own ideas, and it evaluates ideas submitted to it, claim by claim, the same way.
+## How it works
 
-It is field-agnostic — the engine doesn't care what science it's pointed at. Its first field pack targets cancer drug repurposing, because that's where the need is most urgent. A second pack covers cyber-defense technology scouting.
+Ten roles, one append-only blackboard, strict role separation (each agent works
+from its brief and the record sections its job needs), and four human gates:
 
-Honest status, because this project is about not taking anyone's word for it — including mine: it has run one backtest (with knowledge cut off at the end of 2009, it rediscovered aspirin's colorectal-cancer prevention benefit at rank #1; a second target was a partial hit with the wrong mechanism). Its probability estimates are uncalibrated. And everything it produces is **untested** until a real laboratory tests it. The engine is the brain; it has no hands.
+| Stage | Role | Job |
+|---|---|---|
+| Intake | Idea structuring | Turns a plain-language hypothesis into a structured, scorable proposal (score-my-idea mode) |
+| Scout | Literature scout | Builds the dossier the pipeline reasons from |
+| Generator | Hypothesis generator | Proposes testable hypotheses from the dossier |
+| Screener | Safety + knockout screen | Kills unsafe or clearly-dead ideas cheaply |
+| Critic | Red team | Attacks each hypothesis with cited evidence |
+| Verifier | Independent fact-checker | Checks every atomic claim against primary sources, with cited provenance for every verdict |
+| Ranker | Scorer | Knockout gates, then net expected value — estimated in field-native units, ranked in QALY-equivalents |
+| Protocol Writer | Experimentalist | Turns survivors into falsifiable protocols |
+| Liaison | Delivery | Digests and handoff packets |
+| Coordinator | Orchestrator | Runs the pipeline, enforces contracts, brings human gates |
 
-Since the backtest, the engine's top-ranked live proposal has been taken up in discussion with working cancer researchers, and its first test may run on real laboratory data. The components are proven; the combination is untested.
+Surviving hypotheses are scored by **net expected value**:
 
-**How to use it:** If you use Muse, copy the `skills/discovery-agents/` folder into your workspace's skills folder and ask Muse to run a discovery cycle or score your idea. The engine also works with any capable agent setup, or as a design reference — the ideas (independent verification with mandatory provenance, pre-registered falsification, expected-value ranking, human gates) port to any serious research-evaluation workflow.
+```
+Net EV = P(success) × Value(good) − P(harm) × Severity(harm) − program cost
+```
 
-It's free and open under the MIT license, because the mission — curing cancer and advancing science — matters more than commercial potential. If it helps you and you'd like to show appreciation, donations are welcome via PayPal to jonathan.l.copeland@gmail.com.
+denominated in QALY-equivalents, where `P(success) = P(mechanism real) ×
+P(decisive test)`. Every protocol carries **pre-registered falsification
+criteria**: the exact result that would kill the hypothesis.
 
-[Repo link goes here once the GitHub repo exists.]
+Safety is two-tier: categorical exclusions (WMD enablement, information
+hazards, non-consensual human experiments, uncontained self-replicating
+agents) close a proposal immediately; negative net EV is an automatic nogo.
 
-*Produced by the Winnow Institute — a team of AI agents powered by Muse
+## Backtest-01 (first validation)
+
+To test whether the engine can find anything real, it was run with knowledge
+cut off at December 31, 2009, against two held-out targets from the
+pre-2010 literature: aspirin's colorectal-cancer prevention benefit and
+itraconazole's anticancer activity. Of 10 generated hypotheses, an independent
+verifier checked 44 atomic claims (43 supported, 1 contradicted, 0 untested).
+Aspirin was rediscovered at **rank #1** (net EV 297,400 QALY-equivalents);
+itraconazole was a partial hit at rank #8 with the wrong mechanism. One cycle,
+two targets — encouraging, not conclusive.
+
+## Honesty box
+
+This is a **research prototype**, not a validated platform:
+- One backtest cycle and one live run; the probabilities are **uncalibrated**.
+- Every hypothesis the engine produces is **untested** — it needs real-world
+  experimental verification by real laboratories. The engine is the brain;
+  it has no hands.
+- Treat scores as decision-support, not verdicts. The human reviewer is the
+  decision-maker at every gate, by design.
+
+## How to use it
+
+**Option A — with the Muse skill (recommended).** Copy the
+`skills/discovery-agents/` folder from this repository into your Muse
+workspace's skills folder, then ask Muse to run a discovery
+cycle or score your idea. The skill carries the full engine.
+
+**Option B — with any capable agent.** Hand this repository to an AI agent
+that can spawn subagents, browse the literature, and write files. Start it at
+`engine/pipeline.md` for batch discovery or
+`engine/pipeline-score-my-idea.md` to score a single hypothesis, then follow
+the role briefs in `engine/roles/`. The blackboard schema is in
+`engine/blackboard-schema.md`.
+
+**Option C — as a design reference.** Use the ideas: independent verification
+with mandatory provenance,
+pre-registered falsification, EV ranking, human gates. They port to any
+serious research-evaluation workflow.
+
+Field packs live in `packs/`; the engine itself (`engine/`) is field-agnostic.
+`packs/cancer-repurposing/` defines the scout sources, evidence standards, and
+protocol templates for repurposing approved drugs against cancer;
+`packs/cyber-defense/` does the same for defensive cybersecurity technologies,
+with a hard defensive-only safety boundary. Write your own pack for your field.
+
+## License
+
+MIT — see [LICENSE](LICENSE). Use it, fork it, improve it. If you build on
+this, a citation or a note back would be appreciated but is not required.
+
+## Support
+
+This project is free and open because the mission — curing cancer and
+advancing science — matters more than commercial potential. If it helped you
+and you'd like to show appreciation, donations are welcome via PayPal to
+**jonathan.l.copeland@gmail.com**. Every contribution goes toward continuing
+this work.
