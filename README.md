@@ -14,6 +14,25 @@ scientific-discovery engine; its first field pack targets **cancer drug
 repurposing**, because that is where the need — and the potential good — is
 most urgent. A second pack covers **cyber-defense technology scouting**.
 
+## Quick start
+
+1. **Get Muse.** Download the Muse app on your phone, or open
+   [muse.ai](https://muse.ai) in a browser — the web version is what most
+   researchers will use. There is no manual upload for skills in the app or
+   on the web; installation is agent-mediated — your Muse does it for you.
+2. **Paste this prompt into your Muse:**
+
+   ```
+   Please install the Winnow Institute discovery-agents skill from https://github.com/Compguy321/Winnow-Institute — fetch the skills/discovery-agents/ folder from that repository, place it in my workspace's skills folder, and confirm when it's installed. Then run the discovery-agents pipeline for me: either start a discovery cycle in a research area I name, or take an idea I give you and evaluate it claim by claim — red-team it, verify its claims against primary sources with citations, and rank it by expected value with the arithmetic shown. Keep me as the human gate throughout: stop at each gate for my approval, and never publish, send, or hand anything off on my behalf without my explicit say-so.
+   ```
+
+3. **Run it.** Ask Muse to start a discovery cycle in your research area,
+   or to score an idea of yours. You hold every gate — nothing is published
+   or sent without your approval.
+
+Other routes (any capable agent, or the engine as a design reference) are
+covered under **How to use it**, below.
+
 ## How it works
 
 Ten roles, one append-only blackboard, strict role separation (each agent works
@@ -75,12 +94,8 @@ manual upload in the Muse app or on muse.ai — installation is
 agent-mediated: your Muse places the `skills/discovery-agents/` folder
 into your workspace's skills folder for you. Then ask Muse to run a
 discovery cycle or score your idea. The skill carries the full engine.
-
-Or copy and paste this prompt into your Muse:
-
-```
-Please install the Winnow Institute discovery-agents skill from https://github.com/Compguy321/Winnow-Institute — fetch the skills/discovery-agents/ folder from that repository, place it in my workspace's skills folder, and confirm when it's installed. Then run the discovery-agents pipeline for me: either start a discovery cycle in a research area I name, or take an idea I give you and evaluate it claim by claim — red-team it, verify its claims against primary sources with citations, and rank it by expected value with the arithmetic shown. Keep me as the human gate throughout: stop at each gate for my approval, and never publish, send, or hand anything off on my behalf without my explicit say-so.
-```
+(The copy-paste prompt in **Quick start** at the top of this README does
+exactly this.)
 
 **Option B — with any capable agent.** Hand this repository to an AI agent
 that can spawn subagents, browse the literature, and write files. Start it at
